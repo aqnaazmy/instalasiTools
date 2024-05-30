@@ -18,8 +18,8 @@ if ! command -v snap >/dev/null; then
 fi
 
 declare -A tools
-tools["mobile_beginner"]="intellij-idea-community openjdk-11-jdk"
-tools["mobile_intermediate"]="openjdk-11-jdk android-studio"
+tools["mobile_beginner"]="intellij-idea-community java-21-openjdk"
+tools["mobile_intermediate"]="java-21-openjdk android-studio"
 tools["website_beginner"]="code"
 tools["website_intermediate"]="code postman"
 
