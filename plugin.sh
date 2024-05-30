@@ -88,7 +88,7 @@ for tool in $selected_tools; do
         sudo snap install $tool
     elif is_apt_package "$tool"; then
         echo "Menginstal $tool menggunakan apt..."
-        sudo dnf install  $tool
+        sudo apt install -y $tool
     else
         echo "Tool $tool tidak ditemukan di snap atau apt."
         exit 1
