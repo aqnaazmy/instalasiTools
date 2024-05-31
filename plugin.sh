@@ -29,7 +29,7 @@ display_banner
 echo "Selamat datang di installasi PLUGIN."
 echo "1) Squad Web"
 echo "2) Squad Mobile"
-read -p "Silakan pilih skuad: " squad_choice
+read -p "Silakan pilih squad: " squad_choice
 
 case $squad_choice in
     1)
