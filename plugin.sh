@@ -80,12 +80,18 @@ if [ "$squad" == "website" ]; then
     echo "Mengunduh dan menginstal NVM (Node Version Manager)..."
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-    echo "Mengunduh dan menginstal Node.js versi 18 menggunakan NVM..."
+    # Load NVM for current session
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+    echo "Mengunduh dan menginstal Node.js versi 18 menggunakan NVM..."
     nvm install 18
     nvm use 18
     nvm alias default 18
+
+    # Add NVM initialization to /etc/profile to make it available globally
+    echo 'export NVM_DIR="$HOME/.nvm"' | sudo tee -a /etc/profile
+    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' | sudo tee -a /etc/profile
 
     echo "Node.js versi 18 telah terinstal."
 fi
