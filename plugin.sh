@@ -76,4 +76,14 @@ for tool in $selected_tools; do
     sudo snap install $tool --classic
 done
 
+if [ "$squad" == "website" ]; then
+
+    echo "Mengunduh dan menginstal NVM (Node Version Manager)..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+
+    echo "Mengunduh dan menginstal Node.js versi 18 menggunakan NVM..."
+    . ~/.nvm/nvm.sh
+    nvm install 18
+
 echo "Instalasi selesai."
