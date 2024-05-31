@@ -77,13 +77,17 @@ for tool in $selected_tools; do
 done
 
 if [ "$squad" == "website" ]; then
-
     echo "Mengunduh dan menginstal NVM (Node Version Manager)..."
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-
     echo "Mengunduh dan menginstal Node.js versi 18 menggunakan NVM..."
-    . ~/.nvm/nvm.sh
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     nvm install 18
+    nvm use 18
+    nvm alias default 18
+
+    echo "Node.js versi 18 telah terinstal."
+fi
 
 echo "Instalasi selesai."
