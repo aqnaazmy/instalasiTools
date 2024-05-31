@@ -14,12 +14,13 @@ function display_banner {
 # Instalasi snapd jika belum terpasang
 if ! command -v snap >/dev/null; then
     echo "Snap tidak terdeteksi. Menginstal snapd..."
-    sudo apt install -y snapd
+    sudo apt update
+    sudo apt install snapd
 fi
 
 declare -A tools
-tools["mobile_beginner"]="intellij-idea-community java-21-openjdk"
-tools["mobile_intermediate"]="java-21-openjdk android-studio"
+tools["mobile_beginner"]="intellij-idea-community"
+tools["mobile_intermediate"]="android-studio"
 tools["website_beginner"]="code"
 tools["website_intermediate"]="code postman"
 
@@ -28,7 +29,7 @@ display_banner
 echo "Selamat datang di installasi PLUGIN."
 echo "1) Squad Web"
 echo "2) Squad Mobile"
-read -p "Silakan pilih skuat: " squad_choice
+read -p "Silakan pilih skuad: " squad_choice
 
 case $squad_choice in
     1)
@@ -69,30 +70,10 @@ if [ -z "$selected_tools" ]; then
     exit 1
 fi
 
-
-function is_snap_package {
-    snap find "$1" | grep -q "^Name"
-    return $?
-}
-
-
-function is_apt_package {
-    apt-cache show "$1" > /dev/null 2>&1
-    return $?
-}
-
 echo "Menginstal tools untuk $squad $level..."
 for tool in $selected_tools; do
-    if is_snap_package "$tool"; then
-        echo "Menginstal $tool menggunakan snap..."
-        sudo snap install $tool
-    elif is_apt_package "$tool"; then
-        echo "Menginstal $tool menggunakan apt..."
-        sudo apt install -y $tool
-    else
-        echo "Tool $tool tidak ditemukan di snap atau apt."
-        exit 1
-    fi
+    echo "Menginstal $tool..."
+    sudo snap install $tool --classic
 done
 
 echo "Instalasi selesai."
