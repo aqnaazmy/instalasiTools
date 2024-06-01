@@ -15,14 +15,14 @@ function display_banner {
 if ! command -v snap >/dev/null; then
     echo "Snap tidak terdeteksi. Menginstal snapd..."
     sudo apt update
-    sudo apt install snapd
+    sudo apt install -y snapd
 fi
 
 declare -A tools
 tools["mobile_beginner"]="intellij-idea-community"
 tools["mobile_intermediate"]="android-studio"
-tools["website_beginner"]="code"
-tools["website_intermediate"]="code postman"
+tools["website_beginner"]="code node"
+tools["website_intermediate"]="code postman node"
 
 display_banner
 
@@ -75,5 +75,19 @@ for tool in $selected_tools; do
     echo "Menginstal $tool..."
     sudo snap install $tool --classic
 done
+
+if [ "$squad" == "mobile" ]; then
+    echo "Mengunduh dan menginstal JDK 21..."
+    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
+    sudo mkdir -p /usr/lib/jvm
+    sudo tar -xzf jdk-21_linux-x64_bin.tar.gz -C /usr/lib/jvm
+
+    # Set up environment variables
+    echo "export JAVA_HOME=/usr/lib/jvm/jdk-21" >> ~/.bashrc
+    echo "export PATH=\$PATH:\$JAVA_HOME/bin" >> ~/.bashrc
+    source ~/.bashrc
+
+    echo "JDK 21 telah terinstal."
+fi
 
 echo "Instalasi selesai."
