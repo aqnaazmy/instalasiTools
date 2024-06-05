@@ -76,6 +76,9 @@ for tool in $selected_tools; do
     sudo snap install $tool --classic
 done
 
+echo "menginstall discord....."
+sudo snap install discord
+
 if [ "$squad" == "mobile" ]; then
     echo "Mengunduh dan menginstal JDK 21..."
     wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
