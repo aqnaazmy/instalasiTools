@@ -79,18 +79,4 @@ done
 echo "menginstall discord....."
 sudo snap install discord
 
-if [ "$squad" == "mobile" ]; then
-    echo "Mengunduh dan menginstal JDK 21..."
-    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
-    sudo mkdir -p /usr/lib/jvm
-    sudo tar -xzf jdk-21_linux-x64_bin.tar.gz -C /usr/lib/jvm
-
-    # Set up environment variables
-    echo "export JAVA_HOME=/usr/lib/jvm/jdk-21" >> ~/.bashrc
-    echo "export PATH=\$PATH:\$JAVA_HOME/bin" >> ~/.bashrc
-    source ~/.bashrc
-
-    echo "JDK 21 telah terinstal."
-fi
-
 echo "Instalasi selesai."
