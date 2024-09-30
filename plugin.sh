@@ -19,7 +19,7 @@ if ! command -v snap >/dev/null; then
 fi
 
 declare -A tools
-tools["mobile_kotlin"]="android-studio intellij-idea-community"
+tools["mobile_kotlin"]="intellij-idea-community"
 tools["frontend"]="code"
 tools["backend"]="code docker postman"
 
