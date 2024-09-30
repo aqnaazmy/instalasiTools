@@ -19,17 +19,17 @@ if ! command -v snap >/dev/null; then
 fi
 
 declare -A tools
-tools["mobile_kotlin"]="intellij-idea-community"
+tools["mobile_kotlin"]="intellij-idea-community android-studio"
 tools["frontend"]="code"
-tools["backend"]="code docker postman"
+tools["backend"]="code postman"
 
 display_banner
 
 echo "Selamat datang di instalasi PLUGIN."
-echo "1) Squad Mobile Kotlin"
-echo "2) Squad Frontend"
-echo "3) Squad Backend"
-read -p "Silakan pilih squad: " squad_choice
+echo "1) Mobile Kotlin"
+echo "2) Frontend React"
+echo "3) Backend Express"
+read -p "Silakan pilih kelas: " squad_choice
 
 case $squad_choice in
     1)
